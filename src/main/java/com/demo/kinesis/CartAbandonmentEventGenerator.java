@@ -7,6 +7,7 @@ import com.demo.kinesis.model.Product;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -15,8 +16,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * their carts and then abandoning them.
  * <p>
  * This class encapsulates the logic to create random cart abandonment events, including the selection of
- * products, customers, sellers, and timestamps. It uses predefined product data, seller IDs, and customer IDs
- * to construct realistic events.
+ * products, customers, sellers, and timestamps. It uses predefined product data and seller IDs
+ * to construct realistic events. The customer identifier is generated dynamically for each event.
  * <p>
  * Instances of this class are used to generate sample data for testing and showcasing cart abandonment
  * analysis within the e-commerce platform.
@@ -30,25 +31,17 @@ public class CartAbandonmentEventGenerator {
             new Product("B078KRFWQB", "Havells Cista Room Heater, White", 3945)
     };
     static final String[] sellerIDs = {"B07B5XJ572", "B07B275VN9", "B07B88KQZ8", "B07CD2BN46", "B07CRL2GY6"};
-    static final String[] customerIDs = {"AF6I3MZF3P2HMDTVRZR77JNTYUCQ", "AFEXRCHGLYKM5ZGHJBVX6L5VIOXA",
-            "AGVUL37HNVQISEF42ENXXXXMDPRA", "AEWM6BXJQ76ZA3JH3TEG3ORMEDCA", "AFWCCY4OETWIYGV47TLKUZG3NAZA",
-            "AG2SGIEE46YOK5J5WFS52KHY4PYA", "AG22QSZIES6VEC3IVAGKQD4N7WHA", "AHFGWOU2ANAHIK6VUKI267DZO5PQ",
-            "AE7JCA7MTQHV6XTNF2NQFH5DG6KQ", "AHEPPTU7YZ4YNMCKFBT5PG7W2CHQ", "AG7URP5PKDSGZQUIBSSSVTQCYDBQ",
-            "AGVHA7GWJH65MLMZ6UEFQFPFEABA", "AGYUFQB6WUOMBYRLWNULRLC4GQ3A", "AGREWD4V5XIIO7ZZSLOOF5PPW4RA",
-            "AEDTSPMMJN5UL33AYZXSBOVGMRLA", "AGPOYBESW4JLTMELJLGMLV4JKJEA", "AGJ2XZ2PPFHMYQ54KPSUGDLHTOIA",
-            "AEPLOFVKFHPQH4DFHKQXGKWL24NQ", "AGPOYBESW4JLTMELJLGMLV4JKJEA", "AGJ2XZ2PPFHMYQ54KPSUGDLHTOIA"
-    };
 
     /**
      * Generates a random cart abandonment event with simulated data.
      *
-     * @return A `CartAbandonmentEvent` instance representing the simulated event.
+     * @return A {@code CartAbandonmentEvent} instance representing the simulated event.
      */
     public static CartAbandonmentEvent makeEvent() {
         var tlr = ThreadLocalRandom.current();
 
         var sellerID = sellerIDs[tlr.nextInt(sellerIDs.length)];
-        var customerID = customerIDs[tlr.nextInt(customerIDs.length)];
+        var customerID = UUID.randomUUID().toString();
         List<Product> availableProducts = new ArrayList<>(Arrays.asList(products));
 
         List<CartItem> cartItems = new ArrayList<>();
