@@ -20,6 +20,7 @@ The project includes the following classes and files:
 * **Product.java** - A POJO class representing product information, including code, name, and price.
 
 * **pom.xml** - The Maven project configuration file that includes project details, dependencies, and build settings.
+* **log4j.properties** - Sets up logging for the application, including both console output and log file (`kinesis.log`).
 
 ## Prerequisites
 Before running this demo project, make sure you have the following prerequisites:
