@@ -7,7 +7,6 @@ import com.demo.kinesis.model.Product;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -60,6 +59,10 @@ public class CartAbandonmentEventGenerator {
             cartItems.add(new CartItem(p.getName(), p.getCode(), qty, p.getPrice()));
         }
 
-        return new CartAbandonmentEvent(cartItems, customerID, sellerID, System.currentTimeMillis());
+        return CartAbandonmentEvent.builder()
+                .cartItems(cartItems)
+                .customerID(customerID)
+                .sellerID(sellerID)
+                .build();
     }
 }
