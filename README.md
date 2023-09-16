@@ -21,6 +21,13 @@ The project includes the following classes and files:
 
 * **pom.xml** - The Maven project configuration file that includes project details, dependencies, and build settings.
 
+## Prerequisites
+Before running this demo project, make sure you have the following prerequisites:
+
+* **Java Development Kit (JDK)**: Ensure you have Java 8 or later installed.
+* **Amazon Web Services (AWS) Account**: You need an AWS account to create and manage Kinesis streams, DynamoDB tables, and other AWS resources.
+* **AWS CLI**: Install and configure the AWS Command Line Interface (CLI) to set up your AWS credentials.
+
 ## Getting Started
 
 To run the application, follow these steps:
@@ -37,13 +44,14 @@ To run the application, follow these steps:
 4. Run the application
 
    ```bash
-   java -jar target/producer-app-1.0.0.jar <streamName> <region>
+   java -jar target/aws-kpl-producer-jar-with-dependencies.jar <streamName> <region>
    ```
    Replace `stream_name` and `region` with your specific Kinesis stream name and AWS region.
+5. The application will start generating and producing events to the specified Kinesis stream.
 
 ## Configuration
 ### Record aggregation
 Record aggregation allows for combining multiple records into a single Kinesis Data Streams record. This allows for improving their per shard throughput. Aggregation is enabled by default but can be disabled by providing command-line arguments.
 ```bash
-java -jar target/producer-app-1.0.0.jar <streamName> <region> --no-agg
+java -jar target/aws-kpl-producer-jar-with-dependencies.jar <streamName> <region> --no-agg
 ```
