@@ -52,10 +52,6 @@ public class CartAbandonmentEventGenerator {
             cartItems.add(new CartItem(p.getName(), p.getCode(), qty, p.getPrice()));
         }
 
-        return CartAbandonmentEvent.builder()
-                .cartItems(cartItems)
-                .customerID(customerID)
-                .sellerID(sellerID)
-                .build();
+        return new CartAbandonmentEvent(cartItems, customerID, sellerID);
     }
 }
