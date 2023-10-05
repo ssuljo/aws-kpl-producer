@@ -2,7 +2,21 @@
 
 ## Overview
 
-The Java application is designed to simulate cart abandonment events within an e-commerce system. Cart abandonment refers to the situation where a user adds products to their online shopping cart but leaves the website or application without completing the purchase. This application generates simulated instances of cart abandonment, mimicking user behavior, and streams these events to an Amazon Kinesis Data Stream.
+The Java application is designed to simulate cart abandonment events within an e-commerce system. Cart abandonment refers to the situation where a user adds products to their online shopping cart but leaves the website or application without completing the purchase. This application generates simulated instances of cart abandonment, mimicking user behavior, and streams these events to an Amazon Kinesis Data Stream, leveraging the power of the Kinesis Producer Library (KPL).
+
+### Advantages of KPL Usage:
+
+- **Efficient Streaming:** KPL ensures high-speed, low-latency data delivery for real-time cart abandonment analysis.
+
+- **Reliability:** Built-in retry mechanisms handle network issues, guaranteeing data delivery.
+
+- **Aggregation:** KPL supports record aggregation for enhanced performance in high-velocity scenarios.
+
+- **Simplicity:** It simplifies Kinesis data streaming implementation, reducing development time.
+
+- **Robust Error Handling:** Detailed error logs aid in issue tracking and data integrity maintenance.
+
+Integrating KPL elevates application performance and reliability, empowering businesses with valuable user behavior insights for improved conversion rates.
 
 ## Features
 
